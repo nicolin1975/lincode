@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简番茄钟 | 精致专注每一刻</title>
+    <meta name="description" content="一个设计精美、交互流畅的网页版番茄时钟，助您提升工作效率。">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 装饰背景 -->
+        <div class="glass-background"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <main class="timer-card">
+            <header class="app-header">
+                <h1>番茄专注</h1>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="focus">专注</button>
+                    <button class="mode-btn" data-mode="short">短休</button>
+                    <button class="mode-btn" data-mode="long">长休</button>
+                </div>
+            </header>
+
+            <div class="timer-display-container">
+                <svg class="progress-ring" width="320" height="320">
+                    <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="8"
+                        fill="transparent" r="150" cx="160" cy="160" />
+                    <circle class="progress-ring__circle" stroke="url(#gradient)" stroke-width="12"
+                        stroke-linecap="round" fill="transparent" r="150" cx="160" cy="160" />
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF6B6B" />
+                            <stop offset="100%" stop-color="#FF8E53" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="timer-text">
+                    <span id="timer-minutes">25</span>
+                    <span class="separator">:</span>
+                    <span id="timer-seconds">00</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="start-btn" class="primary-btn">开始</button>
+                <button id="reset-btn" class="secondary-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                    </svg>
+                </button>
+                <button id="settings-btn" class="secondary-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- 设置弹窗 (简易实现) -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>时长设置 (分钟)</h2>
+            <div class="setting-item">
+                <label>专注:</label>
+                <input type="number" id="focus-time" value="25" min="1">
+            </div>
+            <div class="setting-item">
+                <label>短休:</label>
+                <input type="number" id="short-time" value="5" min="1">
+            </div>
+            <div class="setting-item">
+                <label>长休:</label>
+                <input type="number" id="long-time" value="15" min="1">
+            </div>
+            <button id="save-settings" class="primary-btn">保存并退出</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
